@@ -1,8 +1,3 @@
-
-ARQUIVO: 11. backend/src/services/printerService.ts<br/>
-CAMINHO: backend/src/services/printerService.ts<br/>
-DESCRIÇÃO: Serviço de impressão automática
-
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import path from 'path';
@@ -11,9 +6,9 @@ import fs from 'fs';
 const execPromise = promisify(exec);
 
 interface PrintOptions {
-  color: boolean;<br/>
-  duplex: boolean;<br/>
-  copies: number;<br/>
+  color: boolean;
+  duplex: boolean;
+  copies: number;
   paperSize?: string;
 }
 
@@ -38,7 +33,7 @@ export class PrinterService {
 
     try {
       const { stdout, stderr } = await execPromise(command);
-      console.log(`Impressão enviada: ${stdout}`);<br/>
+      console.log(`Impressão enviada: ${stdout}`);
       if (stderr) console.warn(`Aviso na impressão: ${stderr}`);
       return true;
     } catch (error) {
@@ -47,15 +42,15 @@ export class PrinterService {
     }
   }
 
-  private buildWindowsCommand(filePath: string, options: PrintOptions): string {<br/>
-    const colorArg = options.color ? '' : '/grayscale';<br/>
+  private buildWindowsCommand(filePath: string, options: PrintOptions): string {
+    const colorArg = options.color ? '' : '/grayscale';
     const duplexArg = options.duplex ? '/duplex' : '/simplex';
     const copiesArg = `/copies ${options.copies}`;
     return `powershell -Command "Start-Process -FilePath '${filePath}' -Verb Print -ArgumentList '${colorArg} ${duplexArg} ${copiesArg}'"`;
   }
 
-  private buildLinuxCommand(filePath: string, options: PrintOptions): string {<br/>
-    const colorArg = options.color ? '' : '-o ColorModel=Gray';<br/>
+  private buildLinuxCommand(filePath: string, options: PrintOptions): string {
+    const colorArg = options.color ? '' : '-o ColorModel=Gray';
     const duplexArg = options.duplex ? '-o sides=two-sided-long-edge' : '-o sides=one-sided';
     const copiesArg = `-n ${options.copies}`;
     return `lp -d "${this.printerName}" ${colorArg} ${duplexArg} ${copiesArg} "${filePath}"`;
@@ -73,8 +68,7 @@ export class PrinterService {
   async getAvailablePrinters(): Promise<string[]> {
     try {
       const { stdout } = await execPromise('lpstat -a');
-      return stdout.split('
-').filter(line => line.trim()).map(line => line.split(' ')[0]);
+      return stdout.split('\n').filter(line => line.trim()).map(line => line.split(' ')[0]);
     } catch {
       return [];
     }
