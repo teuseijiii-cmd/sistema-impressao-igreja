@@ -39,5 +39,3 @@ temp/
 # Docker
 .docker/
 
-# Supabase local (se usar)
-supabase/.temp/
