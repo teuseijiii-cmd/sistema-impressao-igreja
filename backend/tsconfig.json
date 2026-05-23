@@ -1,0 +1,25 @@
+
+ARQUIVO: 9. backend/tsconfig.json<br/>
+CAMINHO: backend/tsconfig.json<br/>
+DESCRIÇÃO: Configuração do TypeScript do backend
+
+{
+  "compilerOptions": {<br/>
+    "target": "ES2020",<br/>
+    "module": "commonjs",<br/>
+    "lib": ["ES2020"],<br/>
+    "outDir": "./dist",<br/>
+    "rootDir": "./src",<br/>
+    "strict": true,<br/>
+    "esModuleInterop": true,<br/>
+    "skipLibCheck": true,<br/>
+    "forceConsistentCasingInFileNames": true,<br/>
+    "resolveJsonModule": true,<br/>
+    "declaration": true,<br/>
+    "declarationMap": true,<br/>
+    "sourceMap": true,<br/>
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*"],<br/>
+  "exclude": ["node_modules", "dist"]
+}
