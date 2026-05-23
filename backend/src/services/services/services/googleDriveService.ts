@@ -1,15 +1,10 @@
-
-ARQUIVO: 12. backend/src/services/googleDriveService.ts<br/>
-CAMINHO: backend/src/services/googleDriveService.ts<br/>
-DESCRIÇÃO: Serviço de integração com Google Drive
-
 import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
 import fs from 'fs';
 import path from 'path';
 
 export class GoogleDriveService {
-  private drive: any;<br/>
+  private drive: any;
   private auth: OAuth2Client;
 
   constructor() {
@@ -29,8 +24,8 @@ export class GoogleDriveService {
   async listFiles(folderId: string): Promise<any[]> {
     try {
       const response = await this.drive.files.list({
-        q: `'${folderId}' in parents and trashed = false`,<br/>
-        fields: 'files(id, name, mimeType, size, createdTime, modifiedTime)',<br/>
+        q: `'${folderId}' in parents and trashed = false`,
+        fields: 'files(id, name, mimeType, size, createdTime, modifiedTime)',
         orderBy: 'modifiedTime desc'
       });
       return response.data.files;
@@ -46,7 +41,7 @@ export class GoogleDriveService {
       const dest = fs.createWriteStream(destPath);
       
       const response = await this.drive.files.get(
-        { fileId, alt: 'media' },<br/>
+        { fileId, alt: 'media' },
         { responseType: 'stream' }
       );
 
@@ -65,18 +60,18 @@ export class GoogleDriveService {
   async uploadFile(filePath: string, folderId: string): Promise<any> {
     try {
       const fileMetadata = {
-        name: path.basename(filePath),<br/>
+        name: path.basename(filePath),
         parents: [folderId]
       };
 
       const media = {
-        mimeType: 'application/octet-stream',<br/>
+        mimeType: 'application/octet-stream',
         body: fs.createReadStream(filePath)
       };
 
       const response = await this.drive.files.create({
-        requestBody: fileMetadata,<br/>
-        media: media,<br/>
+        requestBody: fileMetadata,
+        media: media,
         fields: 'id, name, mimeType, size'
       });
 
@@ -90,13 +85,13 @@ export class GoogleDriveService {
   async createFolder(folderName: string, parentFolderId?: string): Promise<string> {
     try {
       const fileMetadata = {
-        name: folderName,<br/>
-        mimeType: 'application/vnd.google-apps.folder',<br/>
+        name: folderName,
+        mimeType: 'application/vnd.google-apps.folder',
         parents: parentFolderId ? [parentFolderId] : []
       };
 
       const response = await this.drive.files.create({
-        requestBody: fileMetadata,<br/>
+        requestBody: fileMetadata,
         fields: 'id'
       });
 

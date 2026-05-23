@@ -1,8 +1,3 @@
-
-ARQUIVO: 25. backend/start.sh<br/>
-CAMINHO: backend/start.sh<br/>
-DESCRIÇÃO: Script de inicialização do backend
-
 #!/bin/bash
 
 # Verificar se as variáveis de ambiente necessárias existem

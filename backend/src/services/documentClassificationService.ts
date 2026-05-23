@@ -1,16 +1,11 @@
-
-ARQUIVO: 10. backend/src/services/documentClassificationService.ts<br/>
-CAMINHO: backend/src/services/documentClassificationService.ts<br/>
-DESCRIÇÃO: Serviço de classificação automática de documentos por IA
-
 import axios from 'axios';
 
 interface ClassifiedDocument {
-  category: string;<br/>
-  subCategory: string;<br/>
-  date: string;<br/>
-  team: string;<br/>
-  event: string;<br/>
+  category: string;
+  subCategory: string;
+  date: string;
+  team: string;
+  event: string;
   confidence: number;
 }
 
@@ -47,12 +42,12 @@ export class DocumentClassificationService {
 
     // Mapeamento de palavras-chave para categorias
     const patterns = [
-      { keywords: ['escala', 'planilha'], category: 'Escalas', subCategory: 'Escala de Serviço', confidence: 0.9 },<br/>
-      { keywords: ['tarefa', 'checklist'], category: 'Tarefas', subCategory: 'Checklist', confidence: 0.9 },<br/>
-      { keywords: ['louvor', 'cântico', 'hinário'], category: 'Louvor', subCategory: 'Repertório', confidence: 0.9 },<br/>
-      { keywords: ['aviso', 'comunicado', 'edital'], category: 'Avisos', subCategory: 'Comunicado Geral', confidence: 0.9 },<br/>
-      { keywords: ['mídia', 'projeção', 'datashow'], category: 'Mídia', subCategory: 'Projeção', confidence: 0.9 },<br/>
-      { keywords: ['cronograma', 'agenda', 'calendário'], category: 'Cronograma', subCategory: 'Agenda', confidence: 0.9 },<br/>
+      { keywords: ['escala', 'planilha'], category: 'Escalas', subCategory: 'Escala de Serviço', confidence: 0.9 },
+      { keywords: ['tarefa', 'checklist'], category: 'Tarefas', subCategory: 'Checklist', confidence: 0.9 },
+      { keywords: ['louvor', 'cântico', 'hinário'], category: 'Louvor', subCategory: 'Repertório', confidence: 0.9 },
+      { keywords: ['aviso', 'comunicado', 'edital'], category: 'Avisos', subCategory: 'Comunicado Geral', confidence: 0.9 },
+      { keywords: ['mídia', 'projeção', 'datashow'], category: 'Mídia', subCategory: 'Projeção', confidence: 0.9 },
+      { keywords: ['cronograma', 'agenda', 'calendário'], category: 'Cronograma', subCategory: 'Agenda', confidence: 0.9 },
       { keywords: ['relatório', 'prestação'], category: 'Relatórios', subCategory: 'Relatório', confidence: 0.8 },
     ];
 
@@ -97,22 +92,18 @@ export class DocumentClassificationService {
     const response = await axios.post(
       'https://api.anthropic.com/v1/messages',
       {
-        model: 'claude-3-haiku',<br/>
-        max_tokens: 300,<br/>
+        model: 'claude-3-haiku',
+        max_tokens: 300,
         messages: [
           {
-            role: 'user',<br/>
-            content: `Classifique o documento com nome "${filename}" e conteúdo:
-${content.substring(0, 1000)}
-
-Categorias possíveis: Escalas, Tarefas, Louvor, Avisos, Mídia, Cronograma, Relatórios.<br/>
-Forneça: categoria, subcategoria, data, equipe, evento.`
+            role: 'user',
+            content: `Classifique o documento com nome "${filename}" e conteúdo:\n${content.substring(0, 1000)}\n\nCategorias possíveis: Escalas, Tarefas, Louvor, Avisos, Mídia, Cronograma, Relatórios.\nForneça: categoria, subcategoria, data, equipe, evento.`
           }
         ]
       },
       {
-        headers: {<br/>
-          'Content-Type': 'application/json',<br/>
+        headers: {
+          'Content-Type': 'application/json',
           'x-api-key': this.apiKey
         }
       }
@@ -121,11 +112,11 @@ Forneça: categoria, subcategoria, data, equipe, evento.`
     const result = response.data.content[0].text;
     // Parsear resposta (simplificado)
     return {
-      category: 'Outros',<br/>
-      subCategory: '',<br/>
-      date: '',<br/>
-      team: '',<br/>
-      event: '',<br/>
+      category: 'Outros',
+      subCategory: '',
+      date: '',
+      team: '',
+      event: '',
       confidence: 0.6
     };
   }

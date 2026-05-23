@@ -1,8 +1,3 @@
-
-ARQUIVO: 22. backend/Dockerfile<br/>
-CAMINHO: backend/Dockerfile<br/>
-DESCRIÇÃO: Dockerfile do backend para deploy
-
 # Estágio de construção
 FROM node:18-alpine AS builder
 
