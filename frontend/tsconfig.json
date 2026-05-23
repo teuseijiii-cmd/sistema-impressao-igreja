@@ -1,0 +1,30 @@
+
+ARQUIVO: 14. frontend/tsconfig.json<br/>
+CAMINHO: frontend/tsconfig.json<br/>
+DESCRIÇÃO: Configuração do TypeScript do frontend
+
+{
+  "compilerOptions": {<br/>
+    "target": "ES2020",<br/>
+    "useDefineForClassFields": true,<br/>
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],<br/>
+    "module": "ESNext",<br/>
+    "skipLibCheck": true,<br/>
+    "moduleResolution": "bundler",<br/>
+    "allowImportingTsExtensions": true,<br/>
+    "resolveJsonModule": true,<br/>
+    "isolatedModules": true,<br/>
+    "noEmit": true,<br/>
+    "jsx": "react-jsx",<br/>
+    "strict": true,<br/>
+    "noUnusedLocals": true,<br/>
+    "noUnusedParameters": true,<br/>
+    "noFallthroughCasesInSwitch": true,<br/>
+    "baseUrl": ".",<br/>
+    "paths": {<br/>
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"],<br/>
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
