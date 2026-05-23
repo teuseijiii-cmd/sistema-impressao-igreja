@@ -1,0 +1,42 @@
+
+ARQUIVO: 1. backend/package.json<br/>
+CAMINHO: backend/package.json<br/>
+DESCRIÇÃO: Dependências do backend
+
+{
+  "name": "sistema-impressao-igreja-backend",<br/>
+  "version": "1.0.0",<br/>
+  "description": "Backend do sistema de impressão de tarefas da igreja",<br/>
+  "main": "dist/index.js",<br/>
+  "scripts": {<br/>
+    "dev": "ts-node-dev --respawn src/index.ts",<br/>
+    "build": "tsc",<br/>
+    "start": "node dist/index.js",<br/>
+    "test": "jest"
+  },
+  "dependencies": {<br/>
+    "express": "^4.18.2",<br/>
+    "cors": "^2.8.5",<br/>
+    "dotenv": "^16.3.1",<br/>
+    "supabase": "^1.9.1",<br/>
+    "multer": "^1.4.5-lts.1",<br/>
+    "pdfkit": "^0.13.0",<br/>
+    "sharp": "^0.33.1",<br/>
+    "mammoth": "^1.6.0",<br/>
+    "googleapis": "^128.0.0",<br/>
+    "google-auth-library": "^9.0.0",<br/>
+    "uuid": "^9.0.0",<br/>
+    "axios": "^1.6.0",<br/>
+    "dayjs": "^1.11.9"
+  },
+  "devDependencies": {<br/>
+    "typescript": "^5.2.2",<br/>
+    "ts-node-dev": "^2.0.0",<br/>
+    "@types/express": "^4.17.21",<br/>
+    "@types/cors": "^2.8.17",<br/>
+    "@types/multer": "^1.4.11",<br/>
+    "@types/uuid": "^9.0.6",<br/>
+    "@types/node": "^20.10.0",<br/>
+    "nodemon": "^3.0.2"
+  }
+}
