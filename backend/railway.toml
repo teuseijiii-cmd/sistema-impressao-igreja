@@ -1,17 +1,6 @@
-
-ARQUIVO: 24. backend/railway.toml<br/>
-CAMINHO: backend/railway.toml<br/>
-DESCRIÇÃO: Configuração para deploy no Railway
-
 [build]
-builder = "nixpacks"
 buildCommand = "npm install && npm run build"
 
 [deploy]
-numReplicas = 1
 startCommand = "npm start"
 healthcheckPath = "/api/health"
-healthcheckInterval = 30
-
-[service]
-name = "sistema-impressao-igreja-backend"
