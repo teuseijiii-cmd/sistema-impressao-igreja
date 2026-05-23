@@ -1,0 +1,26 @@
+
+ARQUIVO: 2. backend/.env.example<br/>
+CAMINHO: backend/.env.example<br/>
+DESCRIÇÃO: Exemplo de variáveis de ambiente do backend
+
+# Supabase
+SUPABASE_URL=https://seu-projeto.supabase.co
+SUPABASE_ANON_KEY=sua-chave-anon
+SUPABASE_SERVICE_KEY=sua-chave-service
+
+# Google Drive
+GOOGLE_CLIENT_ID=seu-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=seu-client-secret
+GOOGLE_REDIRECT_URI=http://localhost:3000/auth/callback
+GOOGLE_REFRESH_TOKEN=seu-refresh-token
+
+# JWT
+JWT_SECRET=sua-chave-secreta
+JWT_EXPIRES_IN=7d
+
+# Printer (opcional - para impressão local)
+PRINTER_NAME=Nome da Impressora
+PRINTER_URL=http://localhost:631
+
+# Porta do servidor
+PORT=3000
