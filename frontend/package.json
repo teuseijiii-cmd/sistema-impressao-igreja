@@ -1,0 +1,48 @@
+
+ARQUIVO: 4. frontend/package.json<br/>
+CAMINHO: frontend/package.json<br/>
+DESCRIÇÃO: Dependências do frontend React
+
+{
+  "name": "sistema-impressao-igreja-frontend",<br/>
+  "private": true,<br/>
+  "version": "1.0.0",<br/>
+  "type": "module",<br/>
+  "scripts": {<br/>
+    "dev": "vite",<br/>
+    "build": "tsc && vite build",<br/>
+    "preview": "vite preview",<br/>
+    "lint": "eslint ."
+  },
+  "dependencies": {<br/>
+    "react": "^18.2.0",<br/>
+    "react-dom": "^18.2.0",<br/>
+    "react-router-dom": "^6.20.0",<br/>
+    "@supabase/supabase-js": "^2.39.0",<br/>
+    "@react-google-api/login": "^2.0.0",<br/>
+    "axios": "^1.6.0",<br/>
+    "dayjs": "^1.11.9",<br/>
+    "react-dropzone": "^14.2.3",<br/>
+    "react-icons": "^4.12.0",<br/>
+    "react-hot-toast": "^2.4.1",<br/>
+    "date-fns": "^3.0.0",<br/>
+    "pdf-lib": "^1.17.1",<br/>
+    "html2canvas": "^1.4.1",<br/>
+    "jspdf": "^2.5.1"
+  },
+  "devDependencies": {<br/>
+    "@types/react": "^18.2.37",<br/>
+    "@types/react-dom": "^18.2.15",<br/>
+    "@typescript-eslint/eslint-plugin": "^6.10.0",<br/>
+    "@typescript-eslint/parser": "^6.10.0",<br/>
+    "@vitejs/plugin-react": "^4.2.0",<br/>
+    "autoprefixer": "^10.4.16",<br/>
+    "eslint": "^8.53.0",<br/>
+    "eslint-plugin-react-hooks": "^4.6.0",<br/>
+    "eslint-plugin-react-refresh": "^0.4.4",<br/>
+    "postcss": "^8.4.32",<br/>
+    "tailwindcss": "^3.3.6",<br/>
+    "typescript": "^5.2.2",<br/>
+    "vite": "^5.0.0"
+  }
+}
