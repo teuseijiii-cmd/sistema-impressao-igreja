@@ -1,0 +1,14 @@
+
+ARQUIVO: 23. backend/.dockerignore<br/>
+CAMINHO: backend/.dockerignore<br/>
+DESCRIÇÃO: Arquivos ignorados pelo Docker
+
+node_modules
+dist
+.git
+.gitignore
+.env
+.env.local
+.eslintrc.js
+tsconfig.json
+README.md
