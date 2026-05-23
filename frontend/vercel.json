@@ -1,0 +1,26 @@
+
+ARQUIVO: 19. frontend/vercel.json<br/>
+CAMINHO: frontend/vercel.json<br/>
+DESCRIÇÃO: Configuração de deploy na Vercel
+
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",<br/>
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "npm run build",<br/>
+  "outputDirectory": "dist",<br/>
+  "framework": "vite",<br/>
+  "headers": [
+    {
+      "source": "/api/(.*)",<br/>
+      "headers": [<br/>
+        { "key": "Access-Control-Allow-Origin", "value": "*" },<br/>
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PUT, DELETE, OPTIONS" },<br/>
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+      ]
+    }
+  ]
+}
