@@ -1,0 +1,39 @@
+
+ARQUIVO: 26. docker-compose.yml<br/>
+CAMINHO: docker-compose.yml (raiz do projeto)<br/>
+DESCRIÇÃO: Orquestração dos containers Docker
+
+version: '3.8'
+
+services:<br/>
+  backend:<br/>
+    build:<br/>
+      context: ./backend<br/>
+      dockerfile: Dockerfile<br/>
+    ports:<br/>
+      - "3000:3000"<br/>
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_REFRESH_TOKEN=${GOOGLE_REFRESH_TOKEN}
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=3000
+    volumes:<br/>
+      - ./backend/uploads:/app/uploads<br/>
+    restart: unless-stopped
+
+  frontend:<br/>
+    build:<br/>
+      context: ./frontend<br/>
+      dockerfile: Dockerfile<br/>
+    ports:<br/>
+      - "5173:5173"<br/>
+    environment:
+      - VITE_SUPABASE_URL=${VITE_SUPABASE_URL}
+      - VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}
+      - VITE_API_URL=http://backend:3000/api<br/>
+    depends_on:
+      - backend
+    restart: unless-stopped
